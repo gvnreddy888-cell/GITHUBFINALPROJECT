@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HDFCGITHUBproject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+91be0cba9a27c15f108d912dfacba0f0d7658cbe")]
 [assembly: System.Reflection.AssemblyProductAttribute("HDFCGITHUBproject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HDFCGITHUBproject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
