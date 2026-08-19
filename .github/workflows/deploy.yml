@@ -36,18 +36,22 @@ jobs:
 
       - name: Restore dependencies
         run: dotnet restore
-
       - name: Build application
-        run: dotnet build --no-restore
-         
-      - name: publish application
-        run: dotnet publish HDFCGITHUBproject.csproj -c Release -o publish
+        run: dotnet build --no-restore --configuration Release
 
+      - name: Publish application
+        run: dotnet publish HDFCGITHUBproject.csproj --configuration Release --output ./publish
+      - name: show the repo  struture
+        run: ls -R
+        
       - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v2
+        uses: azure/webapps-deploy@v3
         with:
           app-name: hdfc-web-app0981
-          package: publish  
+          package: ./publish
+         
+
+      
 
 
 # name: Terraform Infra and Deploy
@@ -83,7 +87,7 @@ jobs:
 #       - name: Azure Login
 #         uses: azure/login@v2
 #         with:
-#           creds: ${{ secrets.AZURE_SECRETS }}
+#          # creds: ${{ secrets.AZURE_SECRETS }}
 
 #       - name: Setup Terraform
 #         uses: hashicorp/setup-terraform@v3
@@ -109,3 +113,4 @@ jobs:
 #         with:
 #           app-name: hdfc-web-app098
 #           package: ./publish
+         
