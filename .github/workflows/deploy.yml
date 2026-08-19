@@ -79,6 +79,8 @@ jobs:
 
       - name: Publish application
         run: dotnet publish HDFCGITHUBproject.csproj --configuration Release --output ./publish
+      - name: show the repo  struture
+        run: ls -R
 
       - name: Azure Login
         uses: azure/login@v2
@@ -88,24 +90,24 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Terraform Init
-        working-directory: terraform
-        run: terraform init
+      # - name: Terraform Init
+      #   working-directory: terraform
+      #   run: terraform init
 
-      - name: Terraform Validate
-        working-directory: terraform
-        run: terraform validate
+      # - name: Terraform Validate
+      #   working-directory: terraform
+      #   run: terraform validate
 
-      - name: Terraform Plan
-        working-directory: terraform
-        run: terraform plan
+      # - name: Terraform Plan
+      #   working-directory: terraform
+      #   run: terraform plan
 
-      - name: Terraform Apply
-        working-directory: terraform
-        run: terraform apply -auto-approve
+      # - name: Terraform Apply
+      #   working-directory: terraform
+      #   run: terraform apply -auto-approve
 
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: hdfc-web-app098
-          package: ./publish
+      # - name: Deploy to Azure Web App
+      #   uses: azure/webapps-deploy@v3
+      #   with:
+      #     app-name: hdfc-web-app098
+      #     package: ./publish
