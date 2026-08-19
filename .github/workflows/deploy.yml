@@ -106,8 +106,8 @@ jobs:
       #   working-directory: terraform
       #   run: terraform apply -auto-approve
 
-      # - name: Deploy to Azure Web App
-      #   uses: azure/webapps-deploy@v3
-      #   with:
-      #     app-name: hdfc-web-app098
-      #     package: ./publish
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: hdfc-web-app098
+          package: ./publish
