@@ -1,10 +1,507 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "HDFC Bank";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HDFC Bank - Home</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fa;
+            color: #222;
+        }
+
+        /* Header */
+        .top-header {
+            background: #004c8f;
+            color: white;
+            padding: 14px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo-box {
+            width: 42px;
+            height: 42px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #004c8f;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .header-links {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .header-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .login-btn {
+            background: #e31837;
+            padding: 10px 22px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            padding: 0 6%;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 52px;
+        }
+
+        .nav-container a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 18px 10px;
+        }
+
+        .nav-container a:hover {
+            color: #004c8f;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(120deg, #004c8f, #0072bc);
+            color: white;
+            min-height: 390px;
+            display: flex;
+            align-items: center;
+            padding: 50px 8%;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.6;
+            margin-bottom: 28px;
+        }
+
+        .primary-btn {
+            display: inline-block;
+            background: #e31837;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .secondary-btn {
+            display: inline-block;
+            background: white;
+            color: #004c8f;
+            padding: 14px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Services */
+        .services {
+            padding: 50px 7%;
+            background: #fff;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #004c8f;
+            font-size: 30px;
+            margin-bottom: 35px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
+
+        .card-icon {
+            width: 58px;
+            height: 58px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: #e8f2fb;
+            color: #004c8f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+        }
+
+        .card h3 {
+            color: #004c8f;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        /* Quick banking */
+        .quick {
+            padding: 50px 7%;
+            background: #f5f7fa;
+        }
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .quick-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid #004c8f;
+        }
+
+        .quick-card h3 {
+            color: #004c8f;
+            margin-bottom: 10px;
+        }
+
+        .quick-card p {
+            color: #666;
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+
+        .quick-card a {
+            color: #e31837;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #003b70;
+            color: white;
+            padding: 40px 7% 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        footer a {
+            display: block;
+            color: #dce9f5;
+            text-decoration: none;
+            margin-bottom: 9px;
+            font-size: 13px;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 13px;
+            color: #c8d8e8;
+        }
+
+        /* Mobile */
+        @@media (max-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-container {
+                flex-wrap: wrap;
+            }
+        }
+
+        @@media (max-width: 600px) {
+            .top-header {
+                padding: 12px 4%;
+            }
+
+            .header-links {
+                gap: 10px;
+            }
+
+            .header-links a:not(.login-btn) {
+                display: none;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 45px 7%;
+                min-height: 350px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="top-header">
+        <div class="logo">
+            <div class="logo-box">H</div>
+            HDFC BANK
+        </div>
+
+        <div class="header-links">
+            <a href="#">Personal</a>
+            <a href="#">Business</a>
+            <a href="#">NRI</a>
+            <a href="#" class="login-btn">Login</a>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#">Accounts</a>
+            <a href="#">Loans</a>
+            <a href="#">Cards</a>
+            <a href="#">Investments</a>
+            <a href="#">Insurance</a>
+            <a href="#">Digital Banking</a>
+            <a href="#">Offers</a>
+            <a href="#">Help</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Banking Made Simple</h1>
+
+            <p>
+                Experience convenient and secure banking with HDFC Bank.
+                Manage your accounts, transfer money, apply for loans and
+                access a wide range of banking services online.
+            </p>
+
+            <a href="#" class="primary-btn">Get Started</a>
+            <a href="#" class="secondary-btn">Explore Services</a>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <h2 class="section-title">Banking Services</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-icon">₹</div>
+                <h3>Accounts</h3>
+                <p>
+                    Open savings and current accounts with convenient
+                    digital banking services.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">⌂</div>
+                <h3>Home Loans</h3>
+                <p>
+                    Find the right home loan with flexible repayment
+                    options and competitive rates.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">▣</div>
+                <h3>Credit Cards</h3>
+                <p>
+                    Choose from a wide range of credit cards designed
+                    for your lifestyle.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">↗</div>
+                <h3>Investments</h3>
+                <p>
+                    Explore investment options to help you plan and
+                    grow your finances.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Quick Banking -->
+    <section class="quick">
+        <h2 class="section-title">Quick Banking</h2>
+
+        <div class="quick-grid">
+
+            <div class="quick-card">
+                <h3>NetBanking</h3>
+                <p>
+                    Access your account, view transactions and manage
+                    your banking needs online.
+                </p>
+                <a href="#">Login to NetBanking →</a>
+            </div>
+
+            <div class="quick-card">
+                <h3>Mobile Banking</h3>
+                <p>
+                    Bank anytime and anywhere using your mobile device.
+                </p>
+                <a href="#">Learn More →</a>
+            </div>
+
+            <div class="quick-card">
+                <h3>Find a Branch</h3>
+                <p>
+                    Locate the nearest HDFC Bank branch or ATM.
+                </p>
+                <a href="#">Find Now →</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="footer-grid">
+
+            <div>
+                <h3>Products</h3>
+                <a href="#">Savings Account</a>
+                <a href="#">Current Account</a>
+                <a href="#">Personal Loan</a>
+                <a href="#">Home Loan</a>
+            </div>
+
+            <div>
+                <h3>Services</h3>
+                <a href="#">NetBanking</a>
+                <a href="#">Mobile Banking</a>
+                <a href="#">Credit Cards</a>
+                <a href="#">Insurance</a>
+            </div>
+
+            <div>
+                <h3>Support</h3>
+                <a href="#">Contact Us</a>
+                <a href="#">Help Centre</a>
+                <a href="#">FAQs</a>
+                <a href="#">Locate Us</a>
+            </div>
+
+            <div>
+                <h3>Important Links</h3>
+                <a href="#">Security</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Disclaimer</a>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 HDFC Bank Clone — Demo Application
+        </div>
+
+    </footer>
+
+</body>
+</html>

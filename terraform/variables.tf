@@ -19,5 +19,5 @@ variable "app_service_plan_name" {
 variable "web_app_name" {
   description = "The name of the Web App."
   type        = string
-  default     = "hdfc-web-app098"
+  default     = "hdfc-web-app0981"
 }
