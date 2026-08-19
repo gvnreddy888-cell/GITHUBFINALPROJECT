@@ -15,6 +15,7 @@ resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location
 }
+
 resource "azurerm_service_plan" "app_service" {
   name                = var.app_service_plan_name
   location            = azurerm_resource_group.rg.location
@@ -31,8 +32,8 @@ resource "azurerm_windows_web_app" "web_app" {
 
   site_config {
     application_stack {
-      dotnet_version = "v10.0"
       current_stack  = "dotnet"
+      dotnet_version = "v10.0"
     }
   }
 }
